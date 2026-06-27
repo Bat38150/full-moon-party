@@ -445,6 +445,22 @@ body {
     text-align: center;
 }
 
+.footer-signature {
+    display: inline-block;
+
+    margin-top: 8px;
+
+    color: var(--cream);
+
+    font-size: 14px;
+    font-weight: 700;
+
+    letter-spacing: .08em;
+    text-transform: uppercase;
+
+    opacity: .9;
+}
+
 
 /* =========================================================
    12. FORMULAIRES
@@ -835,197 +851,3 @@ textarea::placeholder {
     display: flex;
     justify-content: flex-end;
 
-    gap: 10px;
-
-    margin: 8px 0 0;
-    padding: 0;
-}
-
-
-/* =========================================================
-   20. PAGE LOGIN ORGANISATION
-========================================================= */
-
-.login {
-    max-width: 520px;
-
-    margin: 8vh auto;
-}
-
-.lock {
-    font-size: 44px;
-}
-
-.empty {
-    padding: 24px;
-
-    text-align: center;
-}
-
-
-/* =========================================================
-   21. RESPONSIVE TABLETTE
-========================================================= */
-
-@media (max-width: 900px) {
-
-    .hero {
-        grid-template-columns: 1fr;
-    }
-
-    .poster {
-        max-width: 230px;
-    }
-
-    .dashboard {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-    .progress {
-        grid-column: 1 / -1;
-    }
-
-    .tools {
-        grid-template-columns: 1fr;
-    }
-
-    .grid-3,
-    .grid-2 {
-        grid-template-columns: 1fr;
-    }
-
-    .task {
-        grid-template-columns: 30px 1fr;
-        align-items: start;
-    }
-
-    .task > *:nth-child(n + 3) {
-        grid-column: 2;
-    }
-
-    .task .btn {
-        justify-self: start;
-    }
-
-    .title {
-        -webkit-text-stroke: 1px #fff;
-    }
-
-    .topnav {
-        align-items: flex-start;
-        flex-direction: column;
-    }
-
-    .navlinks {
-        width: 100%;
-
-        flex-wrap: nowrap;
-
-        overflow-x: auto;
-
-        padding-bottom: 4px;
-    }
-
-    .navlinks a {
-        white-space: nowrap;
-    }
-
-    .poster img {
-        height: 300px;
-    }
-
-    .map iframe {
-        height: 300px;
-    }
-
-    .countdown {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-
-/* =========================================================
-   22. RESPONSIVE MOBILE
-========================================================= */
-
-@media (max-width: 520px) {
-
-    .wrap {
-        padding: 18px 13px 60px;
-    }
-
-    .hero {
-        gap: 16px;
-    }
-
-    .poster {
-        max-width: 170px;
-
-        border-radius: 22px;
-    }
-
-    .poster img {
-        height: 235px;
-    }
-
-
-    .title {
-        font-size: 48px;
-        line-height: 0.85;
-        margin-bottom: 10px;
-    }
-
-    .subtitle {
-        font-size: 18px;
-    }
-
-    .card {
-        padding: 16px;
-
-        border-radius: 20px;
-    }
-
-    .dashboard {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .stat:nth-child(3) {
-        grid-column: 1 / -1;
-    }
-
-    .big {
-        font-size: 28px;
-    }
-
-    .section-title h2 {
-        font-size: 24px;
-    }
-
-    .actions .btn {
-        width: 100%;
-    }
-
-    .hero .actions .btn {
-        width: auto;
-    }
-
-    .task {
-        padding: 12px 10px;
-    }
-
-    .theme-header {
-        padding: 14px;
-    }
-
-    .tools {
-        padding: 10px;
-    }
-
-    .countbox {
-        padding: 16px 8px;
-    }
-
-    .countbox span {
-        font-size: 11px;
-    }
-}
