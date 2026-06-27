@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
     parts.h.textContent = pad(hours);
     parts.m.textContent = pad(minutes);
     parts.s.textContent = pad(seconds);
-    parts.txt.textContent = "Objectif lune : samedi 11 juillet 2026 à 19h.";
+    parts.txt.textContent = "Objectif lune : returns to the moon and beyond";
   }
   tick();
   setInterval(tick, 1000);
