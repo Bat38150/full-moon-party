@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Full Moon Party - Todo collaborative</title>
+  <meta name="description" content="Todo list collaborative pour l'organisation de la Full Moon Party." />
+  <link rel="preload" href="affiche.jpg" as="image" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="stars" aria-hidden="true"></div>
+
+  <header class="hero">
+    <div class="hero__poster">
+      <img src="affiche.jpg" alt="Affiche Full Moon Party" />
+    </div>
+    <div class="hero__content">
+      <p class="kicker">Mission organisation</p>
+      <h1>Full Moon Party</h1>
+      <p class="subtitle">Les Assions · 11 juillet 2026 · 19h</p>
+      <div class="hero__actions">
+        <button id="refreshBtn" class="btn btn--primary">Synchroniser</button>
+        <button id="addBtn" class="btn btn--ghost">+ Ajouter une tâche</button>
+      </div>
+      <p id="syncStatus" class="sync">Chargement…</p>
+    </div>
+  </header>
+
+  <main class="app">
+    <section class="dashboard" aria-label="Tableau de bord">
+      <div class="stat"><span id="doneCount">0</span><small>faites</small></div>
+      <div class="stat"><span id="totalCount">0</span><small>tâches</small></div>
+      <div class="stat"><span id="percentCount">0%</span><small>avancement</small></div>
+      <div class="progress"><div id="progressBar"></div></div>
+    </section>
+
+    <section class="tools">
+      <input id="searchInput" type="search" placeholder="Rechercher une tâche, une personne…" />
+      <select id="themeFilter"><option value="">Toutes les thématiques</option></select>
+      <select id="statusFilter"><option value="">Tous les statuts</option></select>
+    </section>
+
+    <section id="configAlert" class="config-alert hidden">
+      <h2>Connexion Google Sheets à configurer</h2>
+      <p>Colle l’URL de ton Web App Google Apps Script dans <strong>script.js</strong>, variable <code>GOOGLE_SCRIPT_URL</code>.</p>
+      <p>En attendant, le site tourne en mode démo local.</p>
+    </section>
+
+    <section id="board" class="board" aria-live="polite"></section>
+  </main>
+
+  <dialog id="taskDialog" class="dialog">
+    <form method="dialog" id="taskForm">
+      <h2 id="dialogTitle">Ajouter une tâche</h2>
+      <input type="hidden" id="taskId" />
+      <label>Thématique<input id="taskTheme" required /></label>
+      <label>Tâche<input id="taskName" required /></label>
+      <label>Responsable<input id="taskOwner" /></label>
+      <label>Statut<select id="taskStatus"></select></label>
+      <label>Échéance<input id="taskDue" type="date" /></label>
+      <label>Commentaires<textarea id="taskComments" rows="3"></textarea></label>
+      <menu>
+        <button type="button" id="cancelDialog" class="btn btn--ghost">Annuler</button>
+        <button type="submit" class="btn btn--primary">Enregistrer</button>
+      </menu>
+    </form>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>
