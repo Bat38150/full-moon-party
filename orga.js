@@ -1,5 +1,5 @@
 "use strict";
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwyxUMkzMm1JDwiBxPW_Z4OwXj_AILbbkQ4kBnWUC856gAHd3w4arAonJl7UVJ3oZPQ7A/exec";
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw_IZKHcjHUd9ogsawLIr8yRnov40qLo82ckAI3SBqn0ubZ9SFjsVim90R1QCU7Kv2Gvw/exec";
 const ORGA_PASSWORD = "fullmoon2026";
 const STATUS_OPTIONS = ["À faire", "En cours", "Besoin d'aide", "Commandé", "Réservé", "Livré", "Terminé"];
 const INITIAL_TASKS = [
