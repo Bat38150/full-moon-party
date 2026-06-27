@@ -968,8 +968,11 @@ textarea::placeholder {
         height: 235px;
     }
 
+
     .title {
-        font-size: 54px;
+        font-size: 48px;
+        line-height: 0.85;
+        margin-bottom: 10px;
     }
 
     .subtitle {
