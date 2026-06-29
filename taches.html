@@ -1,1 +1,232 @@
-<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Tâches · Full Moon Party</title><link rel="stylesheet" href="style.css"><script defer src="auth.js"></script><script defer src="orga.js"></script></head><body><div class="stars"></div><div class="moon"></div><div class="wrap"><nav class="topnav"><div class="brand"><span class="brand-dot"></span>Tâches</div><div class="navlinks"><a href="organisation.html">Accueil orga</a><a href="courses.html">Courses</a><a href="budget.html">Budget</a><a href="planning.html">Planning</a><a href="index.html">Invités</a></div></nav><main id="orgaApp"><header class="hero"><div class="poster"><img src="affiche.jpg" alt="Affiche Full Moon Party"></div><div><p class="kicker">Todo collaborative</p><h1 class="title">Tâches</h1><p class="subtitle">Synchronisation Google Sheets</p><div class="actions"><button id="refreshBtn" type="button" class="btn btn-primary">Synchroniser</button><button id="addBtn" type="button" class="btn btn-ghost">+ Ajouter une tâche</button><button class="btn btn-ghost" type="button" onclick="orgaLogout()">Déconnexion</button></div><p id="syncStatus" class="muted mini">Chargement…</p></div></header><section class="dashboard"><div class="stat"><span id="doneCount">0</span><small>faites</small></div><div class="stat"><span id="totalCount">0</span><small>tâches</small></div><div class="stat"><span id="percentCount">0%</span><small>avancement</small></div><div class="progress"><div id="progressBar"></div></div></section><section class="tools"><input id="searchInput" type="search" placeholder="Rechercher une tâche, une personne…"><select id="themeFilter"><option value="">Toutes les thématiques</option></select><select id="statusFilter"><option value="">Tous les statuts</option></select></section><section id="configAlert" class="alert hidden"><strong>Connexion à vérifier.</strong><br><span class="muted">Vérifie Apps Script, setup et redéploiement.</span></section><section id="board" class="board"></section></main></div><dialog id="taskDialog" class="dialog"><form method="dialog" id="taskForm"><h2 id="dialogTitle">Ajouter une tâche</h2><input type="hidden" id="taskId"><label>Thématique<input id="taskTheme" required></label><label>Tâche<input id="taskName" required></label><label>Responsable<input id="taskOwner"></label><label>Statut<select id="taskStatus"></select></label><label>Échéance<input id="taskDue" type="date"></label><label>Commentaires<textarea id="taskComments" rows="3"></textarea></label><menu><button type="button" id="cancelDialog" class="btn btn-ghost">Annuler</button><button type="submit" class="btn btn-primary">Enregistrer</button></menu></form></dialog></body></html>
+<!doctype html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1">
+
+    <title>Tâches · Full Moon Party</title>
+
+    <link rel="stylesheet"
+          href="style.css">
+
+    <script defer src="auth.js"></script>
+    <script defer src="orga.js"></script>
+</head>
+
+<body>
+
+    <div class="stars"></div>
+    <div class="moon"></div>
+
+    <div class="wrap">
+
+        <!-- NAVIGATION -->
+        <nav class="topnav">
+
+            <div class="brand">
+                <span class="brand-dot"></span>
+                Tâches
+            </div>
+
+            <div class="navlinks">
+                <a href="organisation.html">Accueil orga</a>
+                <a href="courses.html">Courses</a>
+                <a href="budget.html">Budget</a>
+                <a href="planning.html">Planning</a>
+                <a href="index.html">Invités</a>
+            </div>
+
+        </nav>
+
+
+        <!-- CONTENU PRINCIPAL -->
+        <main id="orgaApp">
+
+            <!-- HERO -->
+            <header class="hero">
+
+                <div class="poster">
+                    <img src="affiche.jpg"
+                         alt="Affiche Full Moon Party">
+                </div>
+
+                <div>
+                    <p class="kicker">
+                        Todo collaborative
+                    </p>
+
+                    <h1 class="title">
+                        Tâches
+                    </h1>
+
+                    <p class="subtitle">
+                        Synchronisation Google Sheets
+                    </p>
+
+                    <div class="actions">
+                        <button id="refreshBtn"
+                                type="button"
+                                class="btn btn-primary">
+                            Synchroniser
+                        </button>
+
+                        <button id="addBtn"
+                                type="button"
+                                class="btn btn-ghost">
+                            + Ajouter une tâche
+                        </button>
+
+                        <button type="button"
+                                class="btn btn-ghost"
+                                onclick="orgaLogout()">
+                            Déconnexion
+                        </button>
+                    </div>
+
+                    <p id="syncStatus"
+                       class="muted mini">
+                        Chargement…
+                    </p>
+                </div>
+
+            </header>
+
+
+            <!-- DASHBOARD -->
+            <section class="dashboard">
+
+                <div class="stat">
+                    <span id="doneCount">0</span>
+                    <small>faites</small>
+                </div>
+
+                <div class="stat">
+                    <span id="totalCount">0</span>
+                    <small>tâches</small>
+                </div>
+
+                <div class="stat">
+                    <span id="percentCount">0%</span>
+                    <small>avancement</small>
+                </div>
+
+                <div class="progress">
+                    <div id="progressBar"></div>
+                </div>
+
+            </section>
+
+
+            <!-- OUTILS / FILTRES -->
+            <section class="tools">
+
+                <input id="searchInput"
+                       type="search"
+                       placeholder="Rechercher une tâche, une personne…">
+
+                <select id="themeFilter">
+                    <option value="">Toutes les thématiques</option>
+                </select>
+
+                <select id="statusFilter">
+                    <option value="">Tous les statuts</option>
+                </select>
+
+            </section>
+
+
+            <!-- ALERTE CONNEXION -->
+            <section id="configAlert"
+                     class="alert hidden">
+
+                <strong>Connexion à vérifier.</strong>
+                <br>
+
+                <span class="muted">
+                    Vérifie Apps Script, setup et redéploiement.
+                </span>
+
+            </section>
+
+
+            <!-- BOARD DES TÂCHES -->
+            <section id="board"
+                     class="board">
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- MODALE AJOUT / MODIFICATION TÂCHE -->
+    <dialog id="taskDialog"
+            class="dialog">
+
+        <form method="dialog"
+              id="taskForm">
+
+            <h2 id="dialogTitle">
+                Ajouter une tâche
+            </h2>
+
+            <input type="hidden"
+                   id="taskId">
+
+            <label>
+                Thématique
+                <input id="taskTheme"
+                       required>
+            </label>
+
+            <label>
+                Tâche
+                <input id="taskName"
+                       required>
+            </label>
+
+            <label>
+                Responsable
+                <input id="taskOwner">
+            </label>
+
+            <label>
+                Statut
+                <select id="taskStatus"></select>
+            </label>
+
+            <label>
+                Échéance
+                <input id="taskDue"
+                       type="date">
+            </label>
+
+            <label>
+                Commentaires
+                <textarea id="taskComments"
+                          rows="3"></textarea>
+            </label>
+
+            <menu>
+                <button type="button"
+                        id="cancelDialog"
+                        class="btn btn-ghost">
+                    Annuler
+                </button>
+
+                <button type="submit"
+                        class="btn btn-primary">
+                    Enregistrer
+                </button>
+            </menu>
+
+        </form>
+
+    </dialog>
+
+</body>
+
+</html>
